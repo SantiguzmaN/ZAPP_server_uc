@@ -109,10 +109,8 @@ function saveZonaZipp2(req, res){
 }
 
 
-// Metodo para obtener las zonas ZIPP
+// Metodo para obtener las zonas
 function getZonasZipp(req, res){
-
-	
 	ZonaZipp.find({}).populate({path: 'user'}).exec((err, zonaszipp) => {
 		if(err){
 			res.status(500).send({
@@ -131,8 +129,6 @@ function getZonasZipp(req, res){
 }
 // Metodo para obtener todas las zonas ZIPP web
 function getZonasZipp2(req, res){
-
-
 	ZonaZipp.find({}).exec((err, zonaszipp) => {
 		if(err){
 			res.status(500).send({
@@ -150,10 +146,9 @@ function getZonasZipp2(req, res){
 	});
 }
 
-// Metodo para obtener una sola zona ZIPP
+// Metodo para obtener una zona segun el id
 function getZonaZipp(req, res){
 	var zonazippId = req.params.id;
-
 	ZonaZipp.findById(zonazippId).populate({path: 'user'}).exec((err, zonazipp) => {
 		if(err){
 			res.status(500).send({
@@ -215,7 +210,7 @@ function getRecordZonasZipp(req, res){
 	});
 }
 
-// Metodo para actualizar una zona ZIPP
+// Metodo para actualizar una zona
 function updateZonaZipp(req, res){
 	var zonazippId = req.params.id;
 	var update = req.body;
