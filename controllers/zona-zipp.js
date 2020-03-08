@@ -21,34 +21,34 @@ var Res2 = require('../models/reserva-zona');
 
 // Metodo para guardar las zonas ZIPP
 function saveZonaZipp(req, res){
-	var zonazipp = new ZonaZipp();
+	var zonazapp = new ZonaZipp();
 	var params = req.body;
 
 	if(params.address){
 		//zonazipp.country = params.country;
-		zonazipp.city = params.city;
-		zonazipp.address = params.address;
-		zonazipp.number_spaces = params.number_spaces;
-		zonazipp.price = params.price;
-		zonazipp.image_zona_zipp = null;
-		zonazipp.image_bill = null;
-		zonazipp.horary_start = params.horary_start;
-		zonazipp.horary_to = params.horary_to;
-		zonazipp.estado_zonazipp = params.estado_zonazipp;
-		zonazipp.lat = params.lat;
-		zonazipp.lng = params.lng;		
-		zonazipp.description = params.description;
-		zonazipp.user = req.user.sub;
-		zonazipp.fechaC = req.user.fechaC;
+		zonazapp.city = params.city;
+		zonazapp.address = params.address;
+		zonazapp.number_spaces = params.number_spaces;
+		zonazapp.price = params.price;
+		zonazapp.image_zona_zipp = null;
+		zonazapp.image_bill = null;
+		zonazapp.horary_start = params.horary_start;
+		zonazapp.horary_to = params.horary_to;
+		zonazapp.estado_zonazipp = params.estado_zonazipp;
+		zonazapp.lat = params.lat;
+		zonazapp.lng = params.lng;		
+		zonazapp.description = params.description;
+		zonazapp.user = req.user.sub;
+		zonazapp.fechaC = req.user.fechaC;
 
-		zonazipp.save((err, zonazippStored) => {
+		zonazapp.save((err, zonazippStored) => {
 			if(err){
 				res.status(500).send({message: 'Error en el servidor'});
 			}else{
-				if (!zonazippStored) {
+				if (!zonazappStored) {
 					res.status(404).send({message: 'No se ha guardado la zona zipp'});
 				}else{
-					res.status(200).send({zonazipp: zonazippStored});
+					res.status(200).send({zonazapp: zonazippStored});
 				}
 			}
 		});
@@ -58,46 +58,46 @@ function saveZonaZipp(req, res){
 		});
 	}
 }
-//funion para crear zona zipp dese web
-function saveZonaZipp2(req, res){
-	var zonazipp = new ZonaZipp();
+//funion para crear zona zapp dese web
+function saveZonaZapp2(req, res){
+	var zonazapp = new ZonaZipp();
 	var params = req.body;
 	if(params.address){
-		zonazipp.city = params.city;
-		zonazipp.address = params.address;
-		zonazipp.number_spaces = params.number_spaces;
-		zonazipp.price = params.price;
-		zonazipp.big_type =  params.big_type,
-		zonazipp.medium_type =  params.medium_type,
-		zonazipp.small_type =  params.small_type,
-		zonazipp.electric_station = params.electric_station,
-		zonazipp.leave_key = params.leave_key,
-		zonazipp.total_hours_day = params.total_hours_day,
-		zonazipp.cctv = params.cctv,
-		zonazipp.phone = params.phone,
-		zonazipp.roofed = params.roofed,
-		zonazipp.security_guard = params.security_guard,
-		zonazipp.car_type= params.car_type,
-		zonazipp.motorcycle_type = params.motorcycle_type,
-		zonazipp.bike_type = params.bike_type,	
-		zonazipp.image_zona_zipp = null;
-		zonazipp.image_bill = null;
-		zonazipp.horary = params.horary;
-		zonazipp.estado_zonazipp = params.estado_zonazipp;
-		zonazipp.lat = params.lat;
-		zonazipp.lng = params.lng;		
-		zonazipp.description = params.description;
-		zonazipp.score = params.score;
-		zonazipp.user = req.user.sub;
-		zonazipp.fechaC = req.user.fechaC;
-		zonazipp.save((err, zonazippStored) => {
+		zonazapp.city = params.city;
+		zonazapp.address = params.address;
+		zonazapp.number_spaces = params.number_spaces;
+		zonazapp.price = params.price;
+		zonazapp.big_type =  params.big_type,
+		zonazapp.medium_type =  params.medium_type,
+		zonazapp.small_type =  params.small_type,
+		zonazapp.electric_station = params.electric_station,
+		zonazapp.leave_key = params.leave_key,
+		zonazapp.total_hours_day = params.total_hours_day,
+		zonazapp.cctv = params.cctv,
+		zonazapp.phone = params.phone,
+		zonazapp.roofed = params.roofed,
+		zonazapp.security_guard = params.security_guard,
+		zonazapp.car_type= params.car_type,
+		zonazapp.motorcycle_type = params.motorcycle_type,
+		zonazapp.bike_type = params.bike_type,	
+		zonazapp.image_zona_zipp = null;
+		zonazapp.image_bill = null;
+		zonazapp.horary = params.horary;
+		zonazapp.estado_zonazipp = params.estado_zonazipp;
+		zonazapp.lat = params.lat;
+		zonazapp.lng = params.lng;		
+		zonazapp.description = params.description;
+		zonazapp.score = params.score;
+		zonazapp.user = req.user.sub;
+		zonazapp.fechaC = req.user.fechaC;
+		zonazapp.save((err, zonazippStored) => {
 			if(err){
 				res.status(500).send({message: 'Error en el servidor'});
 			}else{
 				if (!zonazippStored) {
 					res.status(404).send({message: 'No se ha guardado la zona zipp'});
 				}else{
-					res.status(200).send({zonazipp: zonazippStored});
+					res.status(200).send({zonazapp: zonazippStored});
 				}
 			}
 		});
@@ -128,7 +128,7 @@ function getZonasZipp(req, res){
 	});
 }
 // Metodo para obtener todas las zonas ZIPP web
-function getZonasZipp2(req, res){
+function getZonasZapp2(req, res){
 	ZonaZipp.find({}).exec((err, zonaszipp) => {
 		if(err){
 			res.status(500).send({
@@ -347,9 +347,9 @@ function deleteZonaZipp(req, res){
 // Exportar metodos
 module.exports = {
 	saveZonaZipp,
-	saveZonaZipp2,
+	saveZonaZapp2,
 	getZonasZipp,
-	getZonasZipp2,
+	getZonasZapp2,
 
 	getZonaZipp,
 	getZonasZippByUser,

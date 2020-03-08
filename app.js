@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // cargar rutas
-//var cloudiRouter = require('./routes/upload');
 var user_routes = require('./routes/user');
 var userConductor_routes = require('./routes/userConductor');
 var zonazipp_routes = require('./routes/zona-zipp');
@@ -14,7 +13,6 @@ var reservazona_routes = require('./routes/reservaZona');
 var balancecode_route=require('./routes/balance-code');
 
 // middlewares de body-parser
-
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -27,23 +25,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-//HANDLE ERROR
-//app.use((req, res, next) => {
-//	const error = new Error('NOT FOUND');
-//	error.status = 404;
-//	next(error);
-//});
-//app.use((error, req, res, next) => {
-//	res.status(error.status || 500);
-//	res.json({
-//		error: {
-//			message: error.message
-//		}
-//	})
-//});
-
-//rutas base
-//app.use('/api', cloudiRouter);
 app.use('/api', user_routes);
 app.use('/api', userConductor_routes);
 app.use('/api', zonazipp_routes);

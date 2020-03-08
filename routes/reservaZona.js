@@ -5,18 +5,10 @@ var ReservaZonaController = require('../controllers/reserva-zona');
 
 var api = express.Router();
 
-// Guardar zona ZIPP
-//api.post('/zonazipp', [md_auth.ensureAuth, md_admin.isAdmin], ZonaZippController.saveZonaZipp);
-
-// Actualizar zona ZIPP
-//api.put('/zonazipp/:id', md_auth.ensureAuth, ZonaZippController.updateZonaZipp);
-
-// reservar zona zipp
-api.post('/reservazonazipp', ReservaZonaController.saveReservaZipp);
-
-api.get('/reservaszipp', ReservaZonaController.getReservasZipp);
-api.get('/reservaszippbyuser/:id', ReservaZonaController.getReservasZippByUser);
-
+// reservar zona zapp
+api.post('/reservazonazapp', ReservaZonaController.saveReservaZapp);
+api.get('/reservaszapp', ReservaZonaController.getReservasZapp);
+api.get('/reservaszappbyuser/:id', ReservaZonaController.getReservasZappByUser);
 api.put('/actualizareserva/:id', ReservaZonaController.updateReserva);
 
 

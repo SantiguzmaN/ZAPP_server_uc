@@ -16,30 +16,30 @@ var md_upload_bill = multipart({ uploadDir: './uploads/bills' });
 
 // Obtener zonas y zona ZIPP .
 api.get('/zonaszipp', ZonaZippController.getZonasZipp);
-api.get('/zonaszipp2', ZonaZippController.getZonasZipp2);
+api.get('/zonaszipp2', ZonaZippController.getZonasZapp2);
 api.get('/zonazipp/:id', ZonaZippController.getZonaZipp);
 api.get('/zonazippbyuser/:id', ZonaZippController.getZonasZippByUser);
 
 api.get('/recordszonazipp/:id', ZonaZippController.getRecordZonasZipp);
 
 
-// Guardar zona ZIPP web
-api.post('/zonazipp', [md_auth.ensureAuth, md_admin.isAdmin], ZonaZippController.saveZonaZipp2);
+// Guardar zona ZAPP web
+api.post('/zonazipp', [md_auth.ensureAuth, md_admin.isAdmin], ZonaZippController.saveZonaZapp2);
 
-// Actualizar zona ZIPP
+// Actualizar zona ZAPP
 api.put('/zonazippact/:id', ZonaZippController.updateZonaZipp);
-// Actualizar zona ZIPPweb
+// Actualizar zona ZAPPweb
 api.put('/zonazipp2/:id', md_auth.ensureAuth, ZonaZippController.updateZonaZipp);
 
-// Actualizar y obtener imagenes de la zona ZIPP
+// Actualizar y obtener imagenes de la zona ZAPP
 api.post('/upload-image-zonazipp/:id', [md_auth.ensureAuth, md_admin.isAdmin, md_upload], ZonaZippController.uploadImageZonaZipp);
 api.get('/get-image-zonazipp/:imageFile', ZonaZippController.getImageFile);
 
-// Actualizar y obtener imagenes de la factura servicio publico de la zona ZIPP
+// Actualizar y obtener imagenes de la factura servicio publico de la zona ZAPP
 api.post('/upload-image-zonazipp-bill/:id', [md_auth.ensureAuth, md_admin.isAdmin, md_upload_bill], ZonaZippController.uploadImageZonaZippBill);
 api.get('/get-image-zonazipp-bill/:imageFile', ZonaZippController.getImageFileBill);
 
-// Borrar una zona ZIPP
+// Borrar una zona ZAPP
 api.delete('/zonazipp/:id', [md_auth.ensureAuth, md_admin.isAdmin], ZonaZippController.deleteZonaZipp);
 
 

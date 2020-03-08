@@ -139,12 +139,11 @@ function getUserCo(req, res){
 	});
 }
 
-
-
 function login(req, res){
 	var params = req.body;
 	var cedula = params.cedula;
 	var password = params.password;
+	console.log("hola",params)
 
 	UserConductor.findOne({cedula: cedula.toLowerCase()}, (err, user) => {
 		if(err){
@@ -160,6 +159,7 @@ function login(req, res){
 							});
 						}else{
 							res.status(200).send({user});
+							console.log("usuario", user)
 						}
 					}else{
 						res.status(404).send({
