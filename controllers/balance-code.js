@@ -6,22 +6,19 @@ const readline = require("readline");
 var fs = require("fs");
 
 function getBalanceCode(req, res){
-	
+
     var code = req.params.code;
 	BalanceCode.findOne({"code":code}, (err, codigo) =>{
-	  
 		if(err){
 			res.status(500).send({message: 'Error en la petición'});
 		}else{
 			if(!codigo){
 				res.status(404).send({
                     message: 'el codigo no existe'
-                    
+
                 });
-      
 			}else{
                 res.status(200).send({codigo});
-				
 			}
 		}
 	});
@@ -38,7 +35,7 @@ function updateBalance(req, res){
 				res.status(404).send({message:'No se ha podido actualizar el codigo'});
 			}else{
 				res.status(200).send({reserva_zipp: balanceUpdated});
-				
+
 			}
 		}
 	});
@@ -51,7 +48,7 @@ function uploadFile(req, res){
     	input: fs.createReadStream(NOMBRE_ARCHIVO)
 	});
 	lector.on("line", linea => {
-			BalanceCode.findOne({"code":linea}, (errorr, codigo) =>{	  
+			BalanceCode.findOne({"code":linea}, (errorr, codigo) =>{
 				if(errorr){
 				}else{
 					if(!codigo){
@@ -72,7 +69,7 @@ function uploadFile(req, res){
 				}
 			});
 		});
-	
+
 }
 module.exports = {
 	getBalanceCode,
