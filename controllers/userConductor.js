@@ -1,4 +1,4 @@
- 
+
 // modulos
 var bcrypt = require('bcrypt-nodejs');
 var fs = require('fs');
@@ -6,7 +6,6 @@ var path = require('path');
 
 // modelos
 var UserConductor = require('../models/userConductor');
-var user = new UserConductor();
 // servivio jwt
 var jwt = require('../services/jwt-conductor');
 
@@ -81,7 +80,7 @@ function getUcC(req, res){
 	var userced = params.cedula;
 	var usercel = params.celular;
 	var useremail = params.email;
-	console.log('entro con:'+userced)
+	console.log('entro con:'+userced);
 	UserConductor.findOne({cedula:userced,celular:usercel, email:useremail}).exec((err, user) => {
 		if(err){
 			res.status(500).send({
@@ -123,7 +122,7 @@ function getUsers(req, res){
 // Metodo para obtener usuario
 function getUserCo(req, res){
 	var useride = req.params.id;
-		
+
 	UserConductor.findOne({"_id":useride}, (err, user) =>{
 		if(err){
 			res.status(500).send({message: 'Error en la petición'});
@@ -143,7 +142,7 @@ function login(req, res){
 	var params = req.body;
 	var cedula = params.cedula;
 	var password = params.password;
-	console.log("hola",params)
+	console.log("test",params);
 
 	UserConductor.findOne({cedula: cedula.toLowerCase()}, (err, user) => {
 		if(err){
@@ -228,9 +227,9 @@ function uploadImage(req,res){
 	if(req.files){
 		var file_path = req.files.image.path;
 		var file_split = file_path.split('\\');
-		var file_name = file_split[2];
+		file_name = file_split[2];
 
-		var ext_split = file_name.split('\.')
+		var ext_split = file_name.split('\.');
 		var file_ext = ext_split[1];
 
 		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif'){
@@ -286,7 +285,7 @@ function getImageFile(req, res){
 				message: 'La imagen no existe'
 			});
 		}
-	}); 
+	});
 }
 
 

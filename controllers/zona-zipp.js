@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // modulos
 var fs = require('fs');
@@ -14,9 +14,7 @@ cloudinary.config({
 });
 
 // modelos
-var User = require('../models/user');
 var ZonaZipp = require('../models/zona-zipp');
-var ReservaZipp = require('../models/reserva-zipp');
 var Res2 = require('../models/reserva-zona');
 
 // Metodo para guardar las zonas ZIPP
@@ -36,7 +34,7 @@ function saveZonaZipp(req, res){
 		zonazapp.horary_to = params.horary_to;
 		zonazapp.estado_zonazipp = params.estado_zonazipp;
 		zonazapp.lat = params.lat;
-		zonazapp.lng = params.lng;		
+		zonazapp.lng = params.lng;
 		zonazapp.description = params.description;
 		zonazapp.user = req.user.sub;
 		zonazapp.fechaC = req.user.fechaC;
@@ -45,7 +43,7 @@ function saveZonaZipp(req, res){
 			if(err){
 				res.status(500).send({message: 'Error en el servidor'});
 			}else{
-				if (!zonazappStored) {
+				if (!zonazippStored) {
 					res.status(404).send({message: 'No se ha guardado la zona zipp'});
 				}else{
 					res.status(200).send({zonazapp: zonazippStored});
@@ -54,7 +52,7 @@ function saveZonaZipp(req, res){
 		});
 	}else{
 		res.status(200).send({
-			message: 'La dirección es obligatoria' 
+			message: 'La dirección es obligatoria'
 		});
 	}
 }
@@ -79,13 +77,13 @@ function saveZonaZapp2(req, res){
 		zonazapp.security_guard = params.security_guard,
 		zonazapp.car_type= params.car_type,
 		zonazapp.motorcycle_type = params.motorcycle_type,
-		zonazapp.bike_type = params.bike_type,	
+		zonazapp.bike_type = params.bike_type,
 		zonazapp.image_zona_zipp = null;
 		zonazapp.image_bill = null;
 		zonazapp.horary = params.horary;
 		zonazapp.estado_zonazipp = params.estado_zonazipp;
 		zonazapp.lat = params.lat;
-		zonazapp.lng = params.lng;		
+		zonazapp.lng = params.lng;
 		zonazapp.description = params.description;
 		zonazapp.score = params.score;
 		zonazapp.user = req.user.sub;
@@ -234,12 +232,12 @@ function updateZonaZipp(req, res){
 
 // Metodo para cambiar y actualizar la imagen de la zona zipp
 function uploadImageZonaZipp(req, res){
-	
+
 	var cc= req.files;
 	var zonazippId = req.params.id;
 	var file_name = 'No subido...';
-		
-	
+
+
 		cloudinary.uploader.upload(cc.image_zona_zipp.path, function(err, result){
 			console.log('result:'+result.url);
 			file_name=""+result.url;
@@ -275,7 +273,7 @@ function getImageFile(req, res){
 				message: 'La imagen no existe'
 			});
 		}
-	}); 
+	});
 }
 
 // Metodo para subir la imagen de la factura de servicio publico de la zona ZIPP
@@ -283,8 +281,8 @@ function uploadImageZonaZippBill(req, res){
 	var cc= req.files;
 	var zonazippbillId = req.params.id;
 	var file_name = 'No subido...';
-		
-	
+
+
 	cloudinary.uploader.upload(cc.image_bill.path, function(err, result){
 		console.log('result:'+result.url);
 		file_name=""+result.url;
@@ -302,7 +300,7 @@ function uploadImageZonaZippBill(req, res){
 					res.status(200).send({zonazipp: zonazippbillUpdated, image_bill: file_name});
 				}
 			}
-		});			
+		});
 	});
 }
 
@@ -319,7 +317,7 @@ function getImageFileBill(req, res){
 				message: 'La imagen no existe'
 			});
 		}
-	}); 
+	});
 }
 
 // Metodo para borrar una zona ZIPP

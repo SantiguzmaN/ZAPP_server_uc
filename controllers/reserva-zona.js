@@ -1,23 +1,18 @@
-'use strict'
-
-// modulos
-var fs = require('fs');
-var path = require('path');
-
+'use strict';
 // modelos
 var ReservaZona = require('../models/reserva-zona');
 
 // Metodo para guardar las reservas ZIPP
 function saveReservaZapp(req, res){
-	console.log("entró al srevidor desde la aplicación móvil")
+	console.log("entró al srevidor desde la aplicación móvil");
 	var reserva_zapp = new ReservaZona();
 	var params = req.body;
-	
+
 	if(params.placa){
 		reserva_zapp.placa = params.placa;
 		reserva_zapp.valor_total = params.valor_total;
 		reserva_zapp.fecha_inicio = params.fecha_inicio;
-		reserva_zapp.fecha_final = params.fecha_final; 
+		reserva_zapp.fecha_final = params.fecha_final;
 		reserva_zapp.hora_inicio = params.hora_inicio;
 		reserva_zapp.hora_fin = params.hora_fin;
 		reserva_zapp.tiempo_total = params.tiempo_total;
@@ -88,7 +83,7 @@ function getReservasZappByUser(req, res){
 function updateReserva(req, res){
 	let reservaId = req.params.id;
 	let update = req.body;
-	
+
 	ReservaZona.findByIdAndUpdate(reservaId, update,  {new:true}, (err, reservaUpdated) => {
 		if(err){
 			res.status(500).send({message:'Error al actualizar la reserva'});
